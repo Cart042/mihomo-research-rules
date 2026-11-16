@@ -1,0 +1,627 @@
+# Remote provider configuration for the public Cart042/mihomo-research-rules repository.
+# This is the entire content for the 3x-ui Clash/Mihomo global routing field.
+
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+    proxy: DIRECT
+
+  Research:
+    type: http
+    behavior: classical
+    format: yaml
+    url: "https://raw.githubusercontent.com/Cart042/mihomo-research-rules/main/rules/Research.yaml"
+    path: ./ruleset/Research.yaml
+    interval: 86400
+    proxy: DIRECT
+
+# OPTIONAL: broad institution-wide direct routing; uncomment and add a RULE-SET entry if needed.
+#  Research-Institutions:
+#    type: http
+#    behavior: classical
+#    format: yaml
+#    url: "https://raw.githubusercontent.com/Cart042/mihomo-research-rules/main/rules/Research-Institutions-Optional.yaml"
+#    path: ./ruleset/Research-Institutions.yaml
+#    interval: 86400
+#    proxy: DIRECT
+
+rules:
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  # Research-adjacent platforms intentionally excluded from DIRECT
+  - DOMAIN-SUFFIX,google.com,PROXY
+  - DOMAIN-SUFFIX,googleusercontent.com,PROXY
+  - DOMAIN-SUFFIX,github.com,PROXY
+  - DOMAIN-SUFFIX,github.io,PROXY
+  - DOMAIN-SUFFIX,githubusercontent.com,PROXY
+  - DOMAIN-SUFFIX,githubassets.com,PROXY
+  - DOMAIN-SUFFIX,researchgate.net,PROXY
+  - DOMAIN-SUFFIX,academia.edu,PROXY
+  - DOMAIN-SUFFIX,semanticscholar.org,PROXY
+  - DOMAIN-SUFFIX,connectedpapers.com,PROXY
+  - DOMAIN-SUFFIX,litmaps.com,PROXY
+  - DOMAIN-SUFFIX,dimensions.ai,PROXY
+  - DOMAIN-SUFFIX,scite.org,PROXY
+  - DOMAIN-SUFFIX,scite.ai,PROXY
+  - DOMAIN-SUFFIX,openreview.net,PROXY
+  - DOMAIN-SUFFIX,kaggle.com,PROXY
+
+  # Inline research direct rules; these take priority over the general proxy group
+  # Literature search, bibliographic indexes & identifiers
+  - DOMAIN-SUFFIX,nlm.nih.gov,DIRECT
+  - DOMAIN-SUFFIX,pubmed.gov,DIRECT
+  - DOMAIN-SUFFIX,europepmc.org,DIRECT
+  - DOMAIN-SUFFIX,embase.com,DIRECT
+  - DOMAIN-SUFFIX,scopus.com,DIRECT
+  - DOMAIN-SUFFIX,webofscience.com,DIRECT
+  - DOMAIN-SUFFIX,webofknowledge.com,DIRECT
+  - DOMAIN-SUFFIX,clarivate.com,DIRECT
+  - DOMAIN-SUFFIX,isiknowledge.com,DIRECT
+  - DOMAIN-SUFFIX,crossref.org,DIRECT
+  - DOMAIN-SUFFIX,doi.org,DIRECT
+  - DOMAIN-SUFFIX,doi.info,DIRECT
+  - DOMAIN-SUFFIX,datacite.org,DIRECT
+  - DOMAIN-SUFFIX,orcid.org,DIRECT
+  - DOMAIN-SUFFIX,openalex.org,DIRECT
+  - DOMAIN-SUFFIX,lens.org,DIRECT
+  - DOMAIN-SUFFIX,thelens.org,DIRECT
+  - DOMAIN-SUFFIX,altmetric.com,DIRECT
+  - DOMAIN-SUFFIX,pubpeer.com,DIRECT
+  - DOMAIN-SUFFIX,paperity.org,DIRECT
+  - DOMAIN-SUFFIX,core.ac.uk,DIRECT
+  - DOMAIN-SUFFIX,base-search.net,DIRECT
+  - DOMAIN-SUFFIX,doaj.org,DIRECT
+  - DOMAIN-SUFFIX,doabooks.org,DIRECT
+  - DOMAIN-SUFFIX,opencitations.net,DIRECT
+  - DOMAIN-SUFFIX,unpaywall.org,DIRECT
+  - DOMAIN-SUFFIX,openaccessbutton.org,DIRECT
+  - DOMAIN-SUFFIX,oa.mg,DIRECT
+  - DOMAIN-SUFFIX,readcube.com,DIRECT
+  - DOMAIN-SUFFIX,paperpile.com,DIRECT
+  - DOMAIN-SUFFIX,zotero.org,DIRECT
+  - DOMAIN-SUFFIX,endnote.com,DIRECT
+  - DOMAIN-SUFFIX,mendeley.com,DIRECT
+  - DOMAIN-SUFFIX,researchsquare.com,DIRECT
+  - DOMAIN-SUFFIX,worldcat.org,DIRECT
+  - DOMAIN-SUFFIX,oclc.org,DIRECT
+
+  # Publishers, journals & professional societies
+  - DOMAIN-SUFFIX,nature.com,DIRECT
+  - DOMAIN-SUFFIX,springer.com,DIRECT
+  - DOMAIN-SUFFIX,springerlink.com,DIRECT
+  - DOMAIN-SUFFIX,springernature.com,DIRECT
+  - DOMAIN-SUFFIX,biomedcentral.com,DIRECT
+  - DOMAIN-SUFFIX,sciencedirect.com,DIRECT
+  - DOMAIN-SUFFIX,sciencedirectassets.com,DIRECT
+  - DOMAIN-SUFFIX,els-cdn.com,DIRECT
+  - DOMAIN-SUFFIX,elsevier.com,DIRECT
+  - DOMAIN-SUFFIX,wiley.com,DIRECT
+  - DOMAIN-SUFFIX,tandfonline.com,DIRECT
+  - DOMAIN-SUFFIX,taylorandfrancis.com,DIRECT
+  - DOMAIN-SUFFIX,taylorfrancis.com,DIRECT
+  - DOMAIN-SUFFIX,sagepub.com,DIRECT
+  - DOMAIN-SUFFIX,oup.com,DIRECT
+  - DOMAIN-SUFFIX,cambridge.org,DIRECT
+  - DOMAIN-SUFFIX,cambridgecore.org,DIRECT
+  - DOMAIN-SUFFIX,jstor.org,DIRECT
+  - DOMAIN-SUFFIX,plos.org,DIRECT
+  - DOMAIN-SUFFIX,pnas.org,DIRECT
+  - DOMAIN-SUFFIX,science.org,DIRECT
+  - DOMAIN-SUFFIX,sciencemag.org,DIRECT
+  - DOMAIN-SUFFIX,cell.com,DIRECT
+  - DOMAIN-SUFFIX,thelancet.com,DIRECT
+  - DOMAIN-SUFFIX,nejm.org,DIRECT
+  - DOMAIN-SUFFIX,bmj.com,DIRECT
+  - DOMAIN-SUFFIX,jamanetwork.com,DIRECT
+  - DOMAIN-SUFFIX,frontiersin.org,DIRECT
+  - DOMAIN-SUFFIX,mdpi.com,DIRECT
+  - DOMAIN-SUFFIX,peerj.com,DIRECT
+  - DOMAIN-SUFFIX,elifesciences.org,DIRECT
+  - DOMAIN-SUFFIX,f1000research.com,DIRECT
+  - DOMAIN-SUFFIX,hindawi.com,DIRECT
+  - DOMAIN-SUFFIX,degruyter.com,DIRECT
+  - DOMAIN-SUFFIX,degruyterbrill.com,DIRECT
+  - DOMAIN-SUFFIX,brill.com,DIRECT
+  - DOMAIN-SUFFIX,karger.com,DIRECT
+  - DOMAIN-SUFFIX,lww.com,DIRECT
+  - DOMAIN-SUFFIX,wolterskluwer.com,DIRECT
+  - DOMAIN-SUFFIX,ovid.com,DIRECT
+  - DOMAIN-SUFFIX,annualreviews.org,DIRECT
+  - DOMAIN-SUFFIX,aps.org,DIRECT
+  - DOMAIN-SUFFIX,acs.org,DIRECT
+  - DOMAIN-SUFFIX,rsc.org,DIRECT
+  - DOMAIN-SUFFIX,aip.org,DIRECT
+  - DOMAIN-SUFFIX,aapm.org,DIRECT
+  - DOMAIN-SUFFIX,iop.org,DIRECT
+  - DOMAIN-SUFFIX,ieee.org,DIRECT
+  - DOMAIN-SUFFIX,acm.org,DIRECT
+  - DOMAIN-SUFFIX,asm.org,DIRECT
+  - DOMAIN-SUFFIX,microbiologyresearch.org,DIRECT
+  - DOMAIN-SUFFIX,physoc.org,DIRECT
+  - DOMAIN-SUFFIX,physiology.org,DIRECT
+  - DOMAIN-SUFFIX,jbc.org,DIRECT
+  - DOMAIN-SUFFIX,jneurosci.org,DIRECT
+  - DOMAIN-SUFFIX,neurology.org,DIRECT
+  - DOMAIN-SUFFIX,bioone.org,DIRECT
+  - DOMAIN-SUFFIX,bioscientifica.com,DIRECT
+  - DOMAIN-SUFFIX,bioscirep.org,DIRECT
+  - DOMAIN-SUFFIX,royalsocietypublishing.org,DIRECT
+  - DOMAIN-SUFFIX,royalsociety.org,DIRECT
+  - DOMAIN-SUFFIX,embo.org,DIRECT
+  - DOMAIN-SUFFIX,embopress.org,DIRECT
+  - DOMAIN-SUFFIX,genesdev.cshlp.org,DIRECT
+  - DOMAIN-SUFFIX,cshlpress.com,DIRECT
+  - DOMAIN-SUFFIX,cshprotocols.cshlp.org,DIRECT
+  - DOMAIN-SUFFIX,genengnews.com,DIRECT
+  - DOMAIN-SUFFIX,spandidos-publications.com,DIRECT
+  - DOMAIN-SUFFIX,scitation.org,DIRECT
+  - DOMAIN-SUFFIX,societyforindustrialandappliedmathematics.org,DIRECT
+  - DOMAIN-SUFFIX,siam.org,DIRECT
+  - DOMAIN-SUFFIX,optica.org,DIRECT
+  - DOMAIN-SUFFIX,osapublishing.org,DIRECT
+  - DOMAIN-SUFFIX,proquest.com,DIRECT
+  - DOMAIN-SUFFIX,ebscohost.com,DIRECT
+  - DOMAIN-SUFFIX,cabidigitallibrary.org,DIRECT
+  - DOMAIN-SUFFIX,cabdirect.org,DIRECT
+  - DOMAIN-SUFFIX,cabi.org,DIRECT
+  - DOMAIN-SUFFIX,wiley-vch.de,DIRECT
+  - DOMAIN-SUFFIX,jstage.jst.go.jp,DIRECT
+  - DOMAIN-SUFFIX,tandf.co.uk,DIRECT
+  - DOMAIN-SUFFIX,royal-society.org.uk,DIRECT
+
+  # Bioinformatics, genomics & sequence data
+  - DOMAIN-SUFFIX,ebi.ac.uk,DIRECT
+  - DOMAIN-SUFFIX,embl.org,DIRECT
+  - DOMAIN-SUFFIX,embl.de,DIRECT
+  - DOMAIN-SUFFIX,uniprot.org,DIRECT
+  - DOMAIN-SUFFIX,ensembl.org,DIRECT
+  - DOMAIN-SUFFIX,ensemblgenomes.org,DIRECT
+  - DOMAIN-SUFFIX,genenames.org,DIRECT
+  - DOMAIN-SUFFIX,geneontology.org,DIRECT
+  - DOMAIN-SUFFIX,gencodegenes.org,DIRECT
+  - DOMAIN-SUFFIX,genome.jp,DIRECT
+  - DOMAIN-SUFFIX,kegg.jp,DIRECT
+  - DOMAIN-SUFFIX,kegg.org,DIRECT
+  - DOMAIN-SUFFIX,reactome.org,DIRECT
+  - DOMAIN-SUFFIX,string-db.org,DIRECT
+  - DOMAIN-SUFFIX,biogrid.org,DIRECT
+  - DOMAIN-SUFFIX,intact-db.org,DIRECT
+  - DOMAIN-SUFFIX,xfam.org,DIRECT
+  - DOMAIN-SUFFIX,rfam.org,DIRECT
+  - DOMAIN-SUFFIX,expasy.org,DIRECT
+  - DOMAIN-SUFFIX,omnipathdb.org,DIRECT
+  - DOMAIN-SUFFIX,orthodb.org,DIRECT
+  - DOMAIN-SUFFIX,orthomcl.org,DIRECT
+  - DOMAIN-SUFFIX,oma-group.org,DIRECT
+  - DOMAIN-SUFFIX,busco.ezlab.org,DIRECT
+  - DOMAIN-SUFFIX,bioconductor.org,DIRECT
+  - DOMAIN-SUFFIX,biostars.org,DIRECT
+  - DOMAIN-SUFFIX,galaxyproject.org,DIRECT
+  - DOMAIN-SUFFIX,usegalaxy.org,DIRECT
+  - DOMAIN-SUFFIX,usegalaxy.eu,DIRECT
+  - DOMAIN-SUFFIX,usegalaxy.org.au,DIRECT
+  - DOMAIN-SUFFIX,nf-co.re,DIRECT
+  - DOMAIN-SUFFIX,nextflow.io,DIRECT
+  - DOMAIN-SUFFIX,snakemake.readthedocs.io,DIRECT
+  - DOMAIN-SUFFIX,biocontainers.pro,DIRECT
+  - DOMAIN-SUFFIX,bio.tools,DIRECT
+  - DOMAIN-SUFFIX,bioinformatics.org,DIRECT
+  - DOMAIN-SUFFIX,omictools.com,DIRECT
+  - DOMAIN-SUFFIX,biotools.fr,DIRECT
+  - DOMAIN-SUFFIX,seqanswers.com,DIRECT
+  - DOMAIN-SUFFIX,rosalind.info,DIRECT
+  - DOMAIN-SUFFIX,biopython.org,DIRECT
+
+  # Microbiology, infectious disease & pathogen research
+  - DOMAIN-SUFFIX,patricbrc.org,DIRECT
+  - DOMAIN-SUFFIX,bv-brc.org,DIRECT
+  - DOMAIN-SUFFIX,bacterio.net,DIRECT
+  - DOMAIN-SUFFIX,dsmz.de,DIRECT
+  - DOMAIN-SUFFIX,atcc.org,DIRECT
+  - DOMAIN-SUFFIX,gisaid.org,DIRECT
+  - DOMAIN-SUFFIX,nextstrain.org,DIRECT
+  - DOMAIN-SUFFIX,nextclade.org,DIRECT
+  - DOMAIN-SUFFIX,microreact.org,DIRECT
+  - DOMAIN-SUFFIX,enterobase.warwick.ac.uk,DIRECT
+  - DOMAIN-SUFFIX,pubmlst.org,DIRECT
+  - DOMAIN-SUFFIX,pasteur.fr,DIRECT
+  - DOMAIN-SUFFIX,institutpasteur.fr,DIRECT
+  - DOMAIN-SUFFIX,vfdb.org,DIRECT
+  - DOMAIN-SUFFIX,virulencefinder.org,DIRECT
+  - DOMAIN-SUFFIX,cge.food.dtu.dk,DIRECT
+  - DOMAIN-SUFFIX,card.mcmaster.ca,DIRECT
+  - DOMAIN-SUFFIX,ardb.cbcb.umd.edu,DIRECT
+  - DOMAIN-SUFFIX,resfinder.org,DIRECT
+  - DOMAIN-SUFFIX,antimicrobialresistance.org,DIRECT
+  - DOMAIN-SUFFIX,who.int,DIRECT
+  - DOMAIN-SUFFIX,phaster.ca,DIRECT
+  - DOMAIN-SUFFIX,phastest.ca,DIRECT
+  - DOMAIN-SUFFIX,phagesdb.org,DIRECT
+  - DOMAIN-SUFFIX,phage.ai,DIRECT
+  - DOMAIN-SUFFIX,viruspathogenresource.org,DIRECT
+  - DOMAIN-SUFFIX,viprbrc.org,DIRECT
+  - DOMAIN-SUFFIX,virological.org,DIRECT
+  - DOMAIN-SUFFIX,arb-silva.de,DIRECT
+  - DOMAIN-SUFFIX,silva.de,DIRECT
+  - DOMAIN-SUFFIX,greengenes.secondgenome.com,DIRECT
+  - DOMAIN-SUFFIX,greengenes.lbl.gov,DIRECT
+  - DOMAIN-SUFFIX,ezbiocloud.net,DIRECT
+  - DOMAIN-SUFFIX,rrnadb.umms.med.umich.edu,DIRECT
+  - DOMAIN-SUFFIX,rrnadb.net,DIRECT
+  - DOMAIN-SUFFIX,mgedb.org,DIRECT
+  - DOMAIN-SUFFIX,metagenomics.anl.gov,DIRECT
+  - DOMAIN-SUFFIX,mg-rast.org,DIRECT
+  - DOMAIN-SUFFIX,mgnify.org,DIRECT
+  - DOMAIN-SUFFIX,microbiomeanalyst.ca,DIRECT
+  - DOMAIN-SUFFIX,qiime2.org,DIRECT
+  - DOMAIN-SUFFIX,mothur.org,DIRECT
+  - DOMAIN-SUFFIX,pangenome.org,DIRECT
+
+  # Proteins, structures, metabolism & chemistry
+  - DOMAIN-SUFFIX,rcsb.org,DIRECT
+  - DOMAIN-SUFFIX,pdbj.org,DIRECT
+  - DOMAIN-SUFFIX,pdbe.org,DIRECT
+  - DOMAIN-SUFFIX,wwpdb.org,DIRECT
+  - DOMAIN-SUFFIX,alphafold.com,DIRECT
+  - DOMAIN-SUFFIX,swiss-model.org,DIRECT
+  - DOMAIN-SUFFIX,modeller.org,DIRECT
+  - DOMAIN-SUFFIX,foldseek.com,DIRECT
+  - DOMAIN-SUFFIX,dssp.uni-koeln.de,DIRECT
+  - DOMAIN-SUFFIX,cazy.org,DIRECT
+  - DOMAIN-SUFFIX,unicarbkb.org,DIRECT
+  - DOMAIN-SUFFIX,glygen.org,DIRECT
+  - DOMAIN-SUFFIX,metabolomicsworkbench.org,DIRECT
+  - DOMAIN-SUFFIX,metaboanalyst.ca,DIRECT
+  - DOMAIN-SUFFIX,metaboanalyst.org,DIRECT
+  - DOMAIN-SUFFIX,hmdb.ca,DIRECT
+  - DOMAIN-SUFFIX,chembl.org,DIRECT
+  - DOMAIN-SUFFIX,chemspider.com,DIRECT
+  - DOMAIN-SUFFIX,drugbank.com,DIRECT
+  - DOMAIN-SUFFIX,bindingdb.org,DIRECT
+  - DOMAIN-SUFFIX,guidechem.com,DIRECT
+  - DOMAIN-SUFFIX,biorxiv.org,DIRECT
+  - DOMAIN-SUFFIX,chemrxiv.org,DIRECT
+  - DOMAIN-SUFFIX,emolecules.com,DIRECT
+  - DOMAIN-SUFFIX,surechembl.org,DIRECT
+  - DOMAIN-SUFFIX,zinc.docking.org,DIRECT
+  - DOMAIN-SUFFIX,zinc15.docking.org,DIRECT
+  - DOMAIN-SUFFIX,zinc20.docking.org,DIRECT
+  - DOMAIN-SUFFIX,rhea-db.org,DIRECT
+  - DOMAIN-SUFFIX,brenda-enzymes.org,DIRECT
+  - DOMAIN-SUFFIX,sabio-rk.org,DIRECT
+  - DOMAIN-SUFFIX,biocyc.org,DIRECT
+  - DOMAIN-SUFFIX,metacyc.org,DIRECT
+  - DOMAIN-SUFFIX,pathwaycommons.org,DIRECT
+  - DOMAIN-SUFFIX,msigdb.org,DIRECT
+  - DOMAIN-SUFFIX,gsea-msigdb.org,DIRECT
+
+  # Open science, preprints, datasets & reproducibility
+  - DOMAIN-SUFFIX,arxiv.org,DIRECT
+  - DOMAIN-SUFFIX,medrxiv.org,DIRECT
+  - DOMAIN-SUFFIX,preprints.org,DIRECT
+  - DOMAIN-SUFFIX,osf.io,DIRECT
+  - DOMAIN-SUFFIX,zenodo.org,DIRECT
+  - DOMAIN-SUFFIX,figshare.com,DIRECT
+  - DOMAIN-SUFFIX,datadryad.org,DIRECT
+  - DOMAIN-SUFFIX,dryad.org,DIRECT
+  - DOMAIN-SUFFIX,dataverse.harvard.edu,DIRECT
+  - DOMAIN-SUFFIX,dataverse.org,DIRECT
+  - DOMAIN-SUFFIX,re3data.org,DIRECT
+  - DOMAIN-SUFFIX,fairsharing.org,DIRECT
+  - DOMAIN-SUFFIX,openneuro.org,DIRECT
+  - DOMAIN-SUFFIX,brainlife.io,DIRECT
+  - DOMAIN-SUFFIX,physionet.org,DIRECT
+  - DOMAIN-SUFFIX,data.gov,DIRECT
+  - DOMAIN-SUFFIX,data.europa.eu,DIRECT
+  - DOMAIN-SUFFIX,worldbank.org,DIRECT
+  - DOMAIN-SUFFIX,oecd.org,DIRECT
+  - DOMAIN-SUFFIX,oecd-ilibrary.org,DIRECT
+  - DOMAIN-SUFFIX,un.org,DIRECT
+  - DOMAIN-SUFFIX,clinicaltrials.gov,DIRECT
+  - DOMAIN-SUFFIX,clinicaltrialsregister.eu,DIRECT
+  - DOMAIN-SUFFIX,isrctn.com,DIRECT
+  - DOMAIN-SUFFIX,protocol.io,DIRECT
+  - DOMAIN-SUFFIX,protocols.io,DIRECT
+  - DOMAIN-SUFFIX,natureprotocols.com,DIRECT
+  - DOMAIN-SUFFIX,jove.com,DIRECT
+  - DOMAIN-SUFFIX,peercommunityin.org,DIRECT
+  - DOMAIN-SUFFIX,pensoft.net,DIRECT
+  - DOMAIN-SUFFIX,scielo.org,DIRECT
+  - DOMAIN-SUFFIX,redalyc.org,DIRECT
+  - DOMAIN-SUFFIX,arphahub.com,DIRECT
+
+  # Animal medicine, veterinary, livestock & food safety
+  - DOMAIN-SUFFIX,woah.org,DIRECT
+  - DOMAIN-SUFFIX,oie.int,DIRECT
+  - DOMAIN-SUFFIX,fao.org,DIRECT
+  - DOMAIN-SUFFIX,efsa.europa.eu,DIRECT
+  - DOMAIN-SUFFIX,cdc.gov,DIRECT
+  - DOMAIN-SUFFIX,usda.gov,DIRECT
+  - DOMAIN-SUFFIX,food.gov.uk,DIRECT
+  - DOMAIN-SUFFIX,fda.gov,DIRECT
+  - DOMAIN-SUFFIX,avma.org,DIRECT
+  - DOMAIN-SUFFIX,aavmc.org,DIRECT
+  - DOMAIN-SUFFIX,aaha.org,DIRECT
+  - DOMAIN-SUFFIX,wsava.org,DIRECT
+  - DOMAIN-SUFFIX,bsava.com,DIRECT
+  - DOMAIN-SUFFIX,bva.co.uk,DIRECT
+  - DOMAIN-SUFFIX,vetlexicon.com,DIRECT
+  - DOMAIN-SUFFIX,vetstream.com,DIRECT
+  - DOMAIN-SUFFIX,msdvetmanual.com,DIRECT
+  - DOMAIN-SUFFIX,merckvetmanual.com,DIRECT
+  - DOMAIN-SUFFIX,vin.com,DIRECT
+  - DOMAIN-SUFFIX,vetmedresource.org,DIRECT
+  - DOMAIN-SUFFIX,ivis.org,DIRECT
+  - DOMAIN-SUFFIX,veterinary-practice.com,DIRECT
+  - DOMAIN-SUFFIX,isvee.net,DIRECT
+  - DOMAIN-SUFFIX,isvma.org,DIRECT
+  - DOMAIN-SUFFIX,aaep.org,DIRECT
+  - DOMAIN-SUFFIX,aav.org,DIRECT
+  - DOMAIN-SUFFIX,aavpt.org,DIRECT
+  - DOMAIN-SUFFIX,acvim.org,DIRECT
+  - DOMAIN-SUFFIX,acvs.org,DIRECT
+  - DOMAIN-SUFFIX,acvp.org,DIRECT
+  - DOMAIN-SUFFIX,acvecc.org,DIRECT
+  - DOMAIN-SUFFIX,abvp.com,DIRECT
+  - DOMAIN-SUFFIX,vetmed.ucdavis.edu,DIRECT
+  - DOMAIN-SUFFIX,vetmed.tamu.edu,DIRECT
+  - DOMAIN-SUFFIX,vetmed.illinois.edu,DIRECT
+  - DOMAIN-SUFFIX,vetmed.wisc.edu,DIRECT
+  - DOMAIN-SUFFIX,vetmed.umn.edu,DIRECT
+  - DOMAIN-SUFFIX,eclinpath.com,DIRECT
+  - DOMAIN-SUFFIX,vetmed.iastate.edu,DIRECT
+  - DOMAIN-SUFFIX,animalgenome.org,DIRECT
+  - DOMAIN-SUFFIX,animalgenome.org.uk,DIRECT
+  - DOMAIN-SUFFIX,farmhealthonline.com,DIRECT
+  - DOMAIN-SUFFIX,thepoultrysite.com,DIRECT
+  - DOMAIN-SUFFIX,thepigsite.com,DIRECT
+  - DOMAIN-SUFFIX,dairyherd.com,DIRECT
+  - DOMAIN-SUFFIX,fass.org,DIRECT
+  - DOMAIN-SUFFIX,afbini.gov.uk,DIRECT
+  - DOMAIN-SUFFIX,animalhealthireland.ie,DIRECT
+
+  # Science disciplines and research software
+  - DOMAIN-SUFFIX,omicshare.com,DIRECT
+  - DOMAIN-SUFFIX,r-project.org,DIRECT
+  - DOMAIN-SUFFIX,rstudio.com,DIRECT
+  - DOMAIN-SUFFIX,posit.co,DIRECT
+  - DOMAIN-SUFFIX,python.org,DIRECT
+  - DOMAIN-SUFFIX,pypi.org,DIRECT
+  - DOMAIN-SUFFIX,numpy.org,DIRECT
+  - DOMAIN-SUFFIX,scipy.org,DIRECT
+  - DOMAIN-SUFFIX,scikit-learn.org,DIRECT
+  - DOMAIN-SUFFIX,pytorch.org,DIRECT
+  - DOMAIN-SUFFIX,tensorflow.org,DIRECT
+  - DOMAIN-SUFFIX,jupyter.org,DIRECT
+  - DOMAIN-SUFFIX,jupyterbook.org,DIRECT
+  - DOMAIN-SUFFIX,julialang.org,DIRECT
+  - DOMAIN-SUFFIX,juliahub.com,DIRECT
+  - DOMAIN-SUFFIX,tidyverse.org,DIRECT
+  - DOMAIN-SUFFIX,plotly.com,DIRECT
+  - DOMAIN-SUFFIX,matplotlib.org,DIRECT
+  - DOMAIN-SUFFIX,statsmodels.org,DIRECT
+  - DOMAIN-SUFFIX,stata.com,DIRECT
+  - DOMAIN-SUFFIX,sas.com,DIRECT
+  - DOMAIN-SUFFIX,graphpad.com,DIRECT
+  - DOMAIN-SUFFIX,prism.com,DIRECT
+  - DOMAIN-SUFFIX,qiagen.com,DIRECT
+  - DOMAIN-SUFFIX,illumina.com,DIRECT
+  - DOMAIN-SUFFIX,thermofisher.com,DIRECT
+  - DOMAIN-SUFFIX,bio-rad.com,DIRECT
+  - DOMAIN-SUFFIX,neb.com,DIRECT
+  - DOMAIN-SUFFIX,idtdna.com,DIRECT
+  - DOMAIN-SUFFIX,addgene.org,DIRECT
+  - DOMAIN-SUFFIX,benchling.com,DIRECT
+  - DOMAIN-SUFFIX,benchsci.com,DIRECT
+  - DOMAIN-SUFFIX,labarchives.com,DIRECT
+  - DOMAIN-SUFFIX,labguru.com,DIRECT
+  - DOMAIN-SUFFIX,genewiz.com,DIRECT
+  - DOMAIN-SUFFIX,azenta.com,DIRECT
+  - DOMAIN-SUFFIX,biorender.com,DIRECT
+  - DOMAIN-SUFFIX,nc3rs.org.uk,DIRECT
+  - DOMAIN-SUFFIX,3rs-reduction.co.uk,DIRECT
+  - DOMAIN-SUFFIX,openwetware.org,DIRECT
+  - DOMAIN-SUFFIX,labome.com,DIRECT
+  - DOMAIN-SUFFIX,eurofinsgenomics.eu,DIRECT
+
+  # Chinese scholarly publishing and research resources
+  - DOMAIN-SUFFIX,cnki.net,DIRECT
+  - DOMAIN-SUFFIX,cnki.com.cn,DIRECT
+  - DOMAIN-SUFFIX,wanfangdata.com,DIRECT
+  - DOMAIN-SUFFIX,wanfangdata.com.cn,DIRECT
+  - DOMAIN-SUFFIX,cqvip.com,DIRECT
+  - DOMAIN-SUFFIX,cqvip.com.cn,DIRECT
+  - DOMAIN-SUFFIX,cscd.ac.cn,DIRECT
+  - DOMAIN-SUFFIX,cas.cn,DIRECT
+  - DOMAIN-SUFFIX,cstam.org.cn,DIRECT
+  - DOMAIN-SUFFIX,cstr.cn,DIRECT
+  - DOMAIN-SUFFIX,chinaxiv.org,DIRECT
+  - DOMAIN-SUFFIX,chinacdc.cn,DIRECT
+  - DOMAIN-SUFFIX,nmpa.gov.cn,DIRECT
+  - DOMAIN-SUFFIX,moa.gov.cn,DIRECT
+  - DOMAIN-SUFFIX,caas.cn,DIRECT
+  - DOMAIN-SUFFIX,cjas.cn,DIRECT
+  - DOMAIN-SUFFIX,cvma.org.cn,DIRECT
+  - DOMAIN-SUFFIX,cssn.cn,DIRECT
+  - DOMAIN-SUFFIX,sciencenet.cn,DIRECT
+  - DOMAIN-SUFFIX,sciencenet.com,DIRECT
+  - DOMAIN-SUFFIX,sciencechina.cn,DIRECT
+  - DOMAIN-SUFFIX,cnipr.com,DIRECT
+  - DOMAIN-SUFFIX,sinomed.ac.cn,DIRECT
+  - DOMAIN-SUFFIX,sino-med.ac.cn,DIRECT
+  - DOMAIN-SUFFIX,pubscholar.cn,DIRECT
+  - DOMAIN-SUFFIX,nstl.gov.cn,DIRECT
+  - DOMAIN-SUFFIX,nstic.gov.cn,DIRECT
+
+  # More disciplinary libraries and services
+  - DOMAIN-SUFFIX,aclweb.org,DIRECT
+  - DOMAIN-SUFFIX,aclanthology.org,DIRECT
+  - DOMAIN-SUFFIX,jmlr.org,DIRECT
+  - DOMAIN-SUFFIX,mlsys.org,DIRECT
+  - DOMAIN-SUFFIX,neurips.cc,DIRECT
+  - DOMAIN-SUFFIX,proceedings.mlr.press,DIRECT
+  - DOMAIN-SUFFIX,computer.org,DIRECT
+  - DOMAIN-SUFFIX,ieeecomputer.org,DIRECT
+  - DOMAIN-SUFFIX,ieeecomputersociety.org,DIRECT
+  - DOMAIN-SUFFIX,ams.org,DIRECT
+  - DOMAIN-SUFFIX,zbmath.org,DIRECT
+  - DOMAIN-SUFFIX,mathoverflow.net,DIRECT
+  - DOMAIN-SUFFIX,nist.gov,DIRECT
+  - DOMAIN-SUFFIX,chemistryworld.com,DIRECT
+  - DOMAIN-SUFFIX,asme.org,DIRECT
+  - DOMAIN-SUFFIX,astm.org,DIRECT
+  - DOMAIN-SUFFIX,ascelibrary.org,DIRECT
+  - DOMAIN-SUFFIX,engineeringvillage.com,DIRECT
+  - DOMAIN-SUFFIX,icevirtuallibrary.com,DIRECT
+  - DOMAIN-SUFFIX,geoscienceworld.org,DIRECT
+  - DOMAIN-SUFFIX,agu.org,DIRECT
+  - DOMAIN-SUFFIX,eartharxiv.org,DIRECT
+  - DOMAIN-SUFFIX,earthdata.nasa.gov,DIRECT
+  - DOMAIN-SUFFIX,earthobservatory.nasa.gov,DIRECT
+  - DOMAIN-SUFFIX,esa.int,DIRECT
+  - DOMAIN-SUFFIX,copernicus.eu,DIRECT
+  - DOMAIN-SUFFIX,emodnet.ec.europa.eu,DIRECT
+  - DOMAIN-SUFFIX,eol.org,DIRECT
+  - DOMAIN-SUFFIX,gbif.org,DIRECT
+  - DOMAIN-SUFFIX,inaturalist.org,DIRECT
+  - DOMAIN-SUFFIX,iucnredlist.org,DIRECT
+  - DOMAIN-SUFFIX,biodiversitylibrary.org,DIRECT
+  - DOMAIN-SUFFIX,boldsystems.org,DIRECT
+  - DOMAIN-SUFFIX,catalogueoflife.org,DIRECT
+  - DOMAIN-SUFFIX,itis.gov,DIRECT
+  - DOMAIN-SUFFIX,fossilworks.org,DIRECT
+  - DOMAIN-SUFFIX,paleo.net,DIRECT
+  - DOMAIN-SUFFIX,botany.one,DIRECT
+  - DOMAIN-SUFFIX,plantcell.org,DIRECT
+  - DOMAIN-SUFFIX,plantphysiol.org,DIRECT
+  - DOMAIN-SUFFIX,arabidopsis.org,DIRECT
+  - DOMAIN-SUFFIX,gramene.org,DIRECT
+  - DOMAIN-SUFFIX,jgi.doe.gov,DIRECT
+
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,PROXY
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,PROXY
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROX  # Academic sites before generic Google/proxy rules
+  - RULE-SET,Research,DIRECT
+  # - RULE-SET,Research-Institutions,DIRECT  # optional
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,PROXY
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,PROXY
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
