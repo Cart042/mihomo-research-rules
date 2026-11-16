@@ -1,0 +1,70 @@
+# Mihomo / Clash Meta classical rule provider
+# DOMAIN-SUFFIX matches the exact domain and its subdomains.
+# This is a curated routing list; accessibility and institutional access vary.
+payload:
+  # University and public research institutions (opt in) (50)
+  - DOMAIN-SUFFIX,berkeley.edu
+  - DOMAIN-SUFFIX,harvard.edu
+  - DOMAIN-SUFFIX,stanford.edu
+  - DOMAIN-SUFFIX,mit.edu
+  - DOMAIN-SUFFIX,caltech.edu
+  - DOMAIN-SUFFIX,yale.edu
+  - DOMAIN-SUFFIX,princeton.edu
+  - DOMAIN-SUFFIX,cornell.edu
+  - DOMAIN-SUFFIX,uc.edu
+  - DOMAIN-SUFFIX,ucla.edu
+  - DOMAIN-SUFFIX,ucsf.edu
+  - DOMAIN-SUFFIX,ucsd.edu
+  - DOMAIN-SUFFIX,ucdavis.edu
+  - DOMAIN-SUFFIX,cam.ac.uk
+  - DOMAIN-SUFFIX,ox.ac.uk
+  - DOMAIN-SUFFIX,imperial.ac.uk
+  - DOMAIN-SUFFIX,ed.ac.uk
+  - DOMAIN-SUFFIX,ucl.ac.uk
+  - DOMAIN-SUFFIX,kcl.ac.uk
+  - DOMAIN-SUFFIX,sanger.ac.uk
+  - DOMAIN-SUFFIX,bbsrc.ac.uk
+  - DOMAIN-SUFFIX,ukri.org
+  - DOMAIN-SUFFIX,cnrs.fr
+  - DOMAIN-SUFFIX,inserm.fr
+  - DOMAIN-SUFFIX,mpg.de
+  - DOMAIN-SUFFIX,helmholtz.de
+  - DOMAIN-SUFFIX,maxplanckresearchlibrary.org
+  - DOMAIN-SUFFIX,jst.go.jp
+  - DOMAIN-SUFFIX,riken.jp
+  - DOMAIN-SUFFIX,kyoto-u.ac.jp
+  - DOMAIN-SUFFIX,u-tokyo.ac.jp
+  - DOMAIN-SUFFIX,osaka-u.ac.jp
+  - DOMAIN-SUFFIX,tohoku.ac.jp
+  - DOMAIN-SUFFIX,tsinghua.edu.cn
+  - DOMAIN-SUFFIX,pku.edu.cn
+  - DOMAIN-SUFFIX,fudan.edu.cn
+  - DOMAIN-SUFFIX,sjtu.edu.cn
+  - DOMAIN-SUFFIX,zju.edu.cn
+  - DOMAIN-SUFFIX,whu.edu.cn
+  - DOMAIN-SUFFIX,hku.hk
+  - DOMAIN-SUFFIX,cuhk.edu.hk
+  - DOMAIN-SUFFIX,ntu.edu.sg
+  - DOMAIN-SUFFIX,nus.edu.sg
+  - DOMAIN-SUFFIX,unimelb.edu.au
+  - DOMAIN-SUFFIX,monash.edu
+  - DOMAIN-SUFFIX,unsw.edu.au
+  - DOMAIN-SUFFIX,uq.edu.au
+  - DOMAIN-SUFFIX,usyd.edu.au
+  - DOMAIN-SUFFIX,anu.edu.au
+  - DOMAIN-SUFFIX,swu.edu.cn
+
+  # Research-related government and institutional infrastructure (opt in) (13)
+  - DOMAIN-SUFFIX,nih.gov
+  - DOMAIN-SUFFIX,nsf.gov
+  - DOMAIN-SUFFIX,nasa.gov
+  - DOMAIN-SUFFIX,noaa.gov
+  - DOMAIN-SUFFIX,epa.gov
+  - DOMAIN-SUFFIX,usgs.gov
+  - DOMAIN-SUFFIX,doe.gov
+  - DOMAIN-SUFFIX,genome.gov
+  - DOMAIN-SUFFIX,emea.europa.eu
+  - DOMAIN-SUFFIX,ema.europa.eu
+  - DOMAIN-SUFFIX,ec.europa.eu
+  - DOMAIN-SUFFIX,europarl.europa.eu
+  - DOMAIN-SUFFIX,data.gov.uk
